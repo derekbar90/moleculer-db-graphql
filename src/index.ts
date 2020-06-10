@@ -1,7 +1,7 @@
 import { camelCase, pascalCase } from 'change-case';
 import { ServiceSchema } from 'moleculer';
 
-export const MoleculerDBGrapqlMixin = (model: string, typeName: string, entityModel: {}): ServiceSchema => {
+export const MoleculerDBGraphQLMixin = (model: string, typeName: string, entityModel: {}): ServiceSchema => {
   return {
     name: model,
     actions: {
