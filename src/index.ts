@@ -118,4 +118,4 @@ export const MoleculerDBGraphQLMixin = (model: string, typeName: string, entityM
   };
 };
 
-export default MoleculerDBGrapqlMixin;
+export default MoleculerDBGraphQLMixin;

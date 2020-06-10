@@ -1,7 +1,7 @@
-import { MoleculerDBGrapqlMixin } from '../index';
+import { MoleculerDBGraphQLMixin } from '../index';
 
 describe('obj', () => {
-  const expectThis = MoleculerDBGrapqlMixin('foo', 'Foo', {});
+  const expectThis = MoleculerDBGraphQLMixin('foo', 'Foo', {});
 
   it('can instantiate', () => expect(expectThis).toBeInstanceOf(Object));
 });
