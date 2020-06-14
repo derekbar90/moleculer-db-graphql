@@ -1,7 +1,27 @@
 import { camelCase, pascalCase } from 'change-case';
 import { ServiceSchema } from 'moleculer';
 
-export const MoleculerDBGraphQLMixin = (model: string, typeName: string, entityModel: {}): ServiceSchema => {
+export const MoleculerDBGraphQLMixin = (
+  model: string,
+  typeName: string,
+  entityModel: {
+    [key: string]: {
+      [key: string]: any;
+    };
+  }
+): ServiceSchema => {
+  const queryEntityModel: {
+    [key: string]: {
+      [key: string]: any;
+    };
+  } = {};
+
+  // eslint-disable-next-line no-restricted-syntax
+  for (const key of Object.keys(entityModel)) {
+    queryEntityModel[key] = entityModel[key];
+    queryEntityModel[key].optional = true;
+  }
+
   return {
     name: model,
     actions: {
@@ -12,11 +32,11 @@ export const MoleculerDBGraphQLMixin = (model: string, typeName: string, entityM
           query: {
             type: 'object',
             optional: true,
-            props: entityModel,
+            props: queryEntityModel,
           },
         },
         graphql: {
-          query: `count${pascalCase(typeName)}s(search: String, searchFields: String, query: ${pascalCase(
+          query: `count${pascalCase(typeName)}s(search: String, searchFields: String, query: Query${pascalCase(
             typeName
           )}Input): Int`,
         },
@@ -30,13 +50,13 @@ export const MoleculerDBGraphQLMixin = (model: string, typeName: string, entityM
           searchFields: { type: 'string', optional: true },
           query: {
             type: 'object',
-            props: entityModel,
+            props: queryEntityModel,
           },
         },
         graphql: {
           query: `${camelCase(
             typeName
-          )}s(limit: Int!, offset: Int, sort: String, search: String, searchFields: String, query: ${pascalCase(
+          )}s(limit: Int!, offset: Int, sort: String, search: String, searchFields: String, query: Query${pascalCase(
             typeName
           )}Input): [${pascalCase(typeName)}]`,
         },

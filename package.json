@@ -1,6 +1,6 @@
 {
   "name": "@thesatoshicompany/moleculer-db-graphql",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "git": "https://github.com/derekbar90/moleculer-db-graphql.git",
   "scripts": {
     "test": "yarn jest --detectOpenHandles",
