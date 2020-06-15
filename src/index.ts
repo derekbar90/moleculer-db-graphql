@@ -63,7 +63,7 @@ export const MoleculerDBGraphQLMixin = (
       },
       get: {
         graphql: {
-          query: `${camelCase(typeName)}(id: String!): [${pascalCase(typeName)}]`,
+          query: `${camelCase(typeName)}(id: String!): ${pascalCase(typeName)}`,
         },
       },
       create: {
