@@ -31,8 +31,8 @@ export const MoleculerDBGraphQLMixin = (
           searchFields: { type: 'string', optional: true },
           query: {
             type: 'object',
-            optional: true,
             props: queryEntityModel,
+            optional: true,
           },
         },
         graphql: {
@@ -51,6 +51,7 @@ export const MoleculerDBGraphQLMixin = (
           query: {
             type: 'object',
             props: queryEntityModel,
+            optional: true,
           },
         },
         graphql: {
